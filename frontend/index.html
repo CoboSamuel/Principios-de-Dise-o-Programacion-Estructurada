@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo UDLA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">U</div>
+      <div>
+        <p class="eyebrow">ISWZ2202</p>
+        <h1>Catálogo de productos</h1>
+      </div>
+    </div>
+    <span id="apiStatus" class="status status-loading">Comprobando API...</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="hero-tag">Spring Boot + REST API</span>
+        <h2>Explora el catálogo de forma rápida y sencilla</h2>
+        <p>Frontend conectado al endpoint <code>/api/productos</code> del proyecto de Diseño y Arquitectura de Software.</p>
+      </div>
+      <div class="hero-stat">
+        <span id="totalProductos">0</span>
+        <small>productos disponibles</small>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Herramientas del catálogo">
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar por nombre o categoría..." autocomplete="off" />
+      </div>
+
+      <select id="categoryFilter" aria-label="Filtrar por categoría">
+        <option value="">Todas las categorías</option>
+      </select>
+
+      <button id="reloadButton" class="btn-secondary" type="button">Actualizar</button>
+    </section>
+
+    <section id="message" class="message hidden" role="status"></section>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Inventario</p>
+          <h3>Productos</h3>
+        </div>
+        <p id="resultCount" class="result-count"></p>
+      </div>
+
+      <div id="loadingGrid" class="product-grid" aria-hidden="true">
+        <article class="product-card skeleton"></article>
+        <article class="product-card skeleton"></article>
+        <article class="product-card skeleton"></article>
+        <article class="product-card skeleton"></article>
+      </div>
+
+      <div id="productGrid" class="product-grid hidden"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">⌕</div>
+        <h4>No se encontraron productos</h4>
+        <p>Prueba con otro nombre o categoría.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="productDialog" class="product-dialog">
+    <button id="closeDialog" class="dialog-close" aria-label="Cerrar">×</button>
+    <p class="eyebrow">Detalle del producto</p>
+    <h3 id="dialogName">Producto</h3>
+    <div class="detail-row"><span>ID</span><strong id="dialogId"></strong></div>
+    <div class="detail-row"><span>Categoría</span><strong id="dialogCategory"></strong></div>
+    <div class="detail-row"><span>Precio</span><strong id="dialogPrice"></strong></div>
+  </dialog>
+
+  <footer>
+    <p>UDLA · Diseño y Arquitectura de Software · Frontend de demostración</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
